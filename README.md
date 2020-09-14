@@ -105,3 +105,10 @@ npm run build
 ## License
 
 MIT
+
+
+# Local development for FYM 
+
+    DATABASE_TYPE=postgres npm run build
+    yarn dev-with-db
+    

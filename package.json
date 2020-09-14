@@ -10,6 +10,7 @@
     "url": "https://github.com/mikecao/umami.git"
   },
   "scripts": {
+    "dev-with-db": "export DATABASE_TYPE=postgresql && export DATABASE_URL=\"postgresql://umami:umami@127.0.0.1:6433/umami\" && docker-compose -f docker-compose.development.yml up -d && next dev",
     "dev": "next dev",
     "build": "npm-run-all build-tracker build-lang copy-db-schema build-db-client build-app",
     "start": "next start",

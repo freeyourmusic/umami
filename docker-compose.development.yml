@@ -1,0 +1,16 @@
+---
+version: '3'
+services:
+  db:
+    image: postgres:alpine
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: umami
+    volumes:
+      - ./sql/schema.postgresql.sql:/docker-entrypoint-initdb.d/schema.postgresql.sql:ro
+      - umami-db-data:/var/lib/postgresql/data
+    ports:
+    - 6433:5432
+volumes:
+  umami-db-data:

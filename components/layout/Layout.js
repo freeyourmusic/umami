@@ -7,10 +7,10 @@ export default function Layout({ title, children, header = true, footer = true }
   return (
     <>
       <Head>
-        <title>umami{title && ` - ${title}`}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>FYM Stats{title && ` - ${title}`}</title>
+        <link rel="icon" href="https://stamp.imgix.net/statics/logos/favicon-round@400px.png?auto=compress,format&fit=crop&ch=Save-Data" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+          href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap"
           rel="stylesheet"
         />
       </Head>
