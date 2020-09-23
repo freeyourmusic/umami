@@ -22,7 +22,7 @@ export default function TrackingCodeForm({ values, onClose }) {
           rows={3}
           cols={60}
           spellCheck={false}
-          defaultValue={`<script async defer data-website-id="${values.website_uuid}" src="${document.location.origin}/umami.js"></script>`}
+          defaultValue={`!function(){"use strict";!function(e){var t=e.umami=e.umami||[];if(!t.registerAutoEvents)if(t.invoked)e.console&&console.error&&console.error("Umami snippet included twice.");else{t.invoked=!0,t.calls=[],t.methods=["trackView","trackEvent"],t.factory=function(e){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(e),t.calls.push(r),t}};for(var r=0;r<t.methods.length;r++){var a=t.methods[r];t[a]=t.factory(a)}t.load=function(e,t,r){var a=document.createElement("script");a.type="text/javascript",a.defer=!0,a.async=!0,a.setAttribute("data-website-id",t),r&&a.setAttribute("data-auto-track","false"),a.src=e;var o=document.getElementsByTagName("script")[0];o.parentNode.insertBefore(a,o)},t.load("${document.location.origin}/umami.js","${values.website_uuid}",!1)}}(window)}();`}
           readOnly
         />
       </FormRow>

@@ -128,6 +128,13 @@ import { removeTrailingSlash } from '../lib/url';
     setTimeout(addEvents, 300);
   };
 
+  /* Recorded calls init */
+  let scheduledCalls;
+  if (window.umami && !window.trackView) {
+    scheduledCalls = window.umami.calls;
+    window.umami = undefined;
+  }
+
   /* Global */
 
   if (!window.umami) {
@@ -137,6 +144,16 @@ import { removeTrailingSlash } from '../lib/url';
 
     window.umami = umami;
   }
+
+  /* Recorded calls */
+  const availableFns = {trackView, trackEvent}
+
+  if (scheduledCalls) {
+    scheduledCalls.forEach(([fnName, ...params]) => {
+      availableFns[fnName].apply(window.umami, params);
+    });
+  }
+
 
   /* Start */
 

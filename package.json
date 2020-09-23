@@ -16,6 +16,7 @@
     "start": "next start",
     "build-app": "next build",
     "build-tracker": "rollup -c rollup.tracker.config.js",
+    "build-snippet": "rollup -c rollup.snippet.config.js",
     "build-db": "npm-run-all copy-db-schema build-db-client",
     "build-lang": "npm-run-all format-lang compile-lang",
     "copy-db-schema": "node scripts/copy-db-schema.js",
