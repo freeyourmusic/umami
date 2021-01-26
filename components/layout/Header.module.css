@@ -5,6 +5,9 @@
 
 .title {
   font-size: var(--font-size-large);
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
 }
 
 .logo {
@@ -26,20 +29,19 @@
 .buttons {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 @media only screen and (max-width: 992px) {
-  .title {
-    text-align: center;
-  }
-
   .nav {
     font-size: var(--font-size-large);
     justify-content: center;
     padding: 20px 0;
   }
+}
 
-  .buttons {
-    justify-content: center;
+@media only screen and (max-width: 576px) {
+  .header {
+    padding: 0 15px;
   }
 }

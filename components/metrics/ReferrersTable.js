@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import MetricsTable from './MetricsTable';
+import FilterButtons from 'components/common/FilterButtons';
 import { refFilter } from 'lib/filters';
-import ButtonGroup from 'components/common/ButtonGroup';
-import { FILTER_DOMAIN_ONLY, FILTER_COMBINED, FILTER_RAW } from 'lib/constants';
-import ButtonLayout from '../layout/ButtonLayout';
 
-export default function ReferrersTable({
-  websiteId,
-  websiteDomain,
-  token,
-  limit,
-  onExpand = () => {},
-}) {
+export const FILTER_DOMAIN_ONLY = 0;
+export const FILTER_COMBINED = 1;
+export const FILTER_RAW = 2;
+
+export default function ReferrersTable({ websiteId, websiteDomain, showFilters, ...props }) {
   const [filter, setFilter] = useState(FILTER_COMBINED);
 
   const buttons = [
@@ -39,32 +35,22 @@ export default function ReferrersTable({
 
   return (
     <>
-      {!limit && <FilterButtons buttons={buttons} selected={filter} onClick={setFilter} />}
+      {showFilters && <FilterButtons buttons={buttons} selected={filter} onClick={setFilter} />}
       <MetricsTable
+        {...props}
         title={<FormattedMessage id="metrics.referrers" defaultMessage="Referrers" />}
         type="referrer"
         metric={<FormattedMessage id="metrics.views" defaultMessage="Views" />}
         websiteId={websiteId}
         websiteDomain={websiteDomain}
-        token={token}
-        limit={limit}
         dataFilter={refFilter}
         filterOptions={{
           domain: websiteDomain,
           domainOnly: filter === FILTER_DOMAIN_ONLY,
           raw: filter === FILTER_RAW,
         }}
-        onExpand={onExpand}
         renderLabel={renderLink}
       />
     </>
   );
 }
-
-const FilterButtons = ({ buttons, selected, onClick }) => {
-  return (
-    <ButtonLayout>
-      <ButtonGroup size="xsmall" items={buttons} selectedItem={selected} onClick={onClick} />
-    </ButtonLayout>
-  );
-};
