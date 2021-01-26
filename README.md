@@ -111,4 +111,8 @@ MIT
 
     DATABASE_TYPE=postgres npm run build
     yarn dev-with-db
+    psql -h localhost -p 6433 -U umami -d umami -f sql/schema.postgresql.sql
     
+password: "umami"
+
+It will create user with login `admin` and password `umami`
